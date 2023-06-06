@@ -5,10 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { NumerosComponent } from './components/numeros/numeros.component';
+import { PerrosComponent } from './components/perros/perros.component';
+import { DniComponent } from './components/dni/dni.component';
+import { PacienteComponent } from './components/paciente/paciente.component';
 
 @NgModule({
   declarations: [
-    AppComponent //se declaran/registran todos los componentes que trae este módulo
+    AppComponent,
+    NumerosComponent,
+    PerrosComponent,
+    DniComponent,
+    PacienteComponent //se declaran/registran todos los componentes que trae este módulo
   ],
   imports: [
     BrowserModule,//MÓDULO, hace compatible mi app Angular con distintos Navegadores
