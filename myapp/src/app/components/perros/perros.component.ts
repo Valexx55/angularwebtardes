@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerrosComponent implements OnInit {
 
-  constructor() { }
+  constructor() { 
+    console.log("EN EL CONSTRUCTOR DE PERROS");
+  }
 
   ngOnInit(): void {
   }
