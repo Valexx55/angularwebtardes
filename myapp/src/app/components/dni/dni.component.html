@@ -1,2 +1,41 @@
-<p>dni works!</p>
-ESTE ES EL COMPOENTE DNI
+<p>{{titulo}}</p>
+
+<div class="form-check">
+    <input class="form-check-input" value="sin" type="radio" name="prefijo" id="sin" checked>
+    <label class="form-check-label" for="sin">
+      Sin letra (dni español)
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" value="0" type="radio" name="prefijo" id="x" >
+    <label class="form-check-label" for="x">
+      X
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" value="1" type="radio" name="prefijo" id="y" >
+    <label class="form-check-label" for="y">
+      Y
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" value="2" type="radio" name="prefijo" id="z" >
+    <label class="form-check-label" for="z">
+      Z
+    </label>
+  </div>
+
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">DNI</span>
+    <input type="number" [(ngModel)]="valor" class="form-control" placeholder="Meta su dni" aria-label="Username" aria-describedby="basic-addon1">
+  </div>
+
+  <button (click)="calcularLetraDni()" class="btn btn-primary">Calcular Letra</button>
+  <br>
+  <br>
+  <span [class]="dameEstilo()" *ngIf="letra!=''">
+  Su letra es {{letra}}
+  </span>
+<!-- <button (click)="calcularLetraDni()">Calcular Letra</button>
+<input type="text" [(ngModel)]="valor" placeholder="intro valor">
+{{valor}} -->
