@@ -9,6 +9,7 @@ import { NumerosComponent } from './components/numeros/numeros.component';
 import { PerrosComponent } from './components/perros/perros.component';
 import { DniComponent } from './components/dni/dni.component';
 import { PacienteComponent } from './components/paciente/paciente.component';
+import { FortalezaComponent } from './components/fortaleza/fortaleza.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { PacienteComponent } from './components/paciente/paciente.component';
     NumerosComponent,
     PerrosComponent,
     DniComponent,
-    PacienteComponent //se declaran/registran todos los componentes que trae este módulo
+    PacienteComponent,
+    FortalezaComponent //se declaran/registran todos los componentes que trae este módulo
   ],
   imports: [
     BrowserModule,//MÓDULO, hace compatible mi app Angular con distintos Navegadores

@@ -1,0 +1,22 @@
+{{titulo}}
+<div class="form-group">
+    <label for="idfortaleza">Introduzca su contraseña</label>
+    <input type="password" [(ngModel)]="passUsuario" [class]="estiloInputFortaleza()" id="idfortaleza"
+        placeholder="Intro contraseña">
+</div>
+<!--si passUsario!=null tiene algo no está vacío-->
+<div *ngIf="passUsuario&&nivel==2">
+    {{mensajeFuerte}}
+</div>
+<div *ngIf="passUsuario&&nivel==1">
+    {{mensajeMedia}}
+</div>
+<div *ngIf="passUsuario&&nivel==0">
+    {{mensajeDebil}}
+</div>
+<!-- <div class="valid-feedback">
+    Looks good!
+</div>
+<div class="invalid-feedback">
+    {{mensajeFuerte()}}
+</div> -->
