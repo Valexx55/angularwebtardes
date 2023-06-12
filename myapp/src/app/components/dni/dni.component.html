@@ -36,6 +36,25 @@
   <span [class]="dameEstilo()" *ngIf="letra!=''">
   Su letra es {{letra}}
   </span>
-<!-- <button (click)="calcularLetraDni()">Calcular Letra</button>
-<input type="text" [(ngModel)]="valor" placeholder="intro valor">
-{{valor}} -->
+
+ <!--sección para mostrar la lista ngFOR-->
+ <div *ngIf="listaDnis && listaDnis.length>0">
+  <table class="table">
+      <thead>
+        <th>PREFIJO</th>
+        <th>NUMERO</th>
+        <th>LETRA</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dniaux of listaDnis">
+          <td>{{dniaux.prefijo}}</td>
+          <td>{{dniaux.numero}}</td>
+          <td>{{dniaux.letra}}</td>
+        </tr>
+      </tbody>
+
+  </table>
+
+  <button (click)="ordenarPorNumero()" class="btn btn-primary">Ordenar por Número</button><br><br>
+  <button (click)="ordenarPorLetra()" class="btn btn-primary">Ordenar por Letra</button>
+ </div>

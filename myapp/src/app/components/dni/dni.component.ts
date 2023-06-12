@@ -115,4 +115,23 @@ export class DniComponent implements OnInit, OnDestroy {
     return estilo;
   }
 
+  ordenarPorNumero()
+  {
+    this.listaDnis.sort(
+      (dni1:Dni, dni2:Dni):number =>
+      {
+        let resultado = 0;
+         
+          resultado = dni1.numero-dni2.numero;
+
+        return resultado;
+      }
+    );
+  }
+
+  ordenarPorLetra()
+  {
+
+  }
+
 }
