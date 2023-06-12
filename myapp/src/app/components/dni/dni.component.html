@@ -56,5 +56,23 @@
   </table>
 
   <button (click)="ordenarPorNumero()" class="btn btn-primary">Ordenar por Número</button><br><br>
+ <!-- //TODO: hacer funcionar la ordenacion por letra--> 
   <button (click)="ordenarPorLetra()" class="btn btn-primary">Ordenar por Letra</button>
- </div>
+  <br><br>
+  <table class="table">
+    <thead>
+      <th>PREFIJO</th>
+      <th>NUMERO</th>
+      <th>LETRA</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dniauxpar of listaDnisPares">
+        <td>{{dniauxpar.prefijo}}</td>
+        <td>{{dniauxpar.numero}}</td>
+        <td>{{dniauxpar.letra}}</td>
+      </tr>
+    </tbody>
+
+</table>
+
+</div>

@@ -21,6 +21,7 @@ export class DniComponent implements OnInit, OnDestroy {
   letra:string; //letra!:string;//! operador relaja la restricción de inicializar el atributo
 
   listaDnis:Array<Dni>;
+  listaDnisPares:Array<Dni>;
 
   constructor() { 
     //inicializamos
@@ -28,6 +29,7 @@ export class DniComponent implements OnInit, OnDestroy {
     this.valor= null;
     this.letra='';
     this.listaDnis = new Array<Dni>();//creo la lista vacía
+    this.listaDnisPares = new Array<Dni>();
   }
   ngOnDestroy(): void {
     console.log("ngOnDestroy DniComponent")
@@ -78,7 +80,8 @@ export class DniComponent implements OnInit, OnDestroy {
         this.listaDnis.push(dni);//add a la lista el dni
 
       }
-    console.log("Letra DNI ESP = "+ this.letra );
+      this.listaDnisPares = this.listaDnis.filter(dni => dni.numero % 2 == 0);
+      console.log("Letra DNI ESP = "+ this.letra );
       this.mostrarListaDnis();
       this.mostrarListaDnisFuncional();
 
@@ -129,9 +132,14 @@ export class DniComponent implements OnInit, OnDestroy {
     );
   }
 
+  filtrarDnisPares(){
+    this.listaDnis = this.listaDnis.
+                        filter(dni => dni.numero % 2 == 0);
+}
+
   ordenarPorLetra()
   {
-
+    //TODO: hacer funcionar la ordenacion por letra 
   }
 
 }
