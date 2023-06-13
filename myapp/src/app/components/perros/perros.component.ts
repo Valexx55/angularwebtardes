@@ -1,3 +1,4 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { Observer } from 'rxjs';
@@ -39,6 +40,41 @@ export class PerrosComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //SI NECESITAMOS CONSUIMIR UN SERVICIO AL CARGAR EL COMPONENTE
+    //DEBO HACERLO EN EL ngOnInit y no en el Constructor
+    this.perroService.getPerroAleatorioConCabecera().subscribe(//this.observadorPerrosWeb);
+      {
+        complete: () => console.log("Complete"),
+        error: (error_rx) => console.error(error_rx),
+        next: (http_rx:HttpResponse<PerroWeb>) => {
+
+          
+          this.mostrarCabeceras(http_rx);
+          let perro_rx = <PerroWeb> http_rx.body;
+          
+          console.log(` 
+          PERRO RECIBIDO BIEN CON CABECERAS
+          ${perro_rx.message}
+          ${perro_rx.status}`);
+          this.perro = perro_rx;//Actualizo el perro visible, con el perro recibido
+          
+          let urlArray = perro_rx.message.split("/");
+          this.perro.raza = urlArray[4];
+        
+        }
+      }
+    );
+  }
+
+  mostrarCabeceras (http_response:HttpResponse<PerroWeb>)
+  {
+    //tipo mime
+    let tipomime:string|null = http_response.headers.get('content-type');
+    //status
+    let statusnumber: number=http_response.status;
+    //texto status
+    let statustext: string=http_response.statusText;
+    console.log(`TIPO MIME ${tipomime} STATUS ${statusnumber} ${statustext}`);
   }
 
   damePerro(): void {
@@ -62,6 +98,8 @@ export class PerrosComponent implements OnInit {
         }
       }
     );
+
+    
 
   }
 

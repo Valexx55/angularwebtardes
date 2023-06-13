@@ -2,4 +2,6 @@
 <img src={{perro.message}} class="img-fluid" alt="Responsive image"><br>
 <br><button (click)="damePerro()" class="btn btn-primary">Cargar Perro</button>
 <br><br>
-<p>La raza es: {{perro.raza |titlecase}}</p>
+<p>La raza es: Estilo Título {{perro.raza | titlecase}}</p>
+<p>La raza es: En Minúsculas {{perro.raza | lowercase}}</p>
+<p>La raza es: En Mayúsculas {{perro.raza | uppercase}}</p>

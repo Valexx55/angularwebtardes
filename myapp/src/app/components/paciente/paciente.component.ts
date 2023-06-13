@@ -9,6 +9,10 @@ export class PacienteComponent implements OnInit {
 
   constructor() { }
 
+  //que más clases me faltan
+  //MODELO -> class interfaz PACIENTE
+  //SERVICIO -> PARA pedir los datos al Server de Pacientes
+
   ngOnInit(): void {
   }
 

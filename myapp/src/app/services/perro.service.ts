@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { PerroWeb } from '../models/perro-web';
 import { Observable } from 'rxjs';
@@ -23,5 +23,10 @@ export class PerroService {
   getPerroAleatorio ():Observable<PerroWeb>
   {
     return this.httpCliente.get<PerroWeb>(PerroService.WEB_API_PERROS);
+  }
+
+  getPerroAleatorioConCabecera ():Observable<HttpResponse<PerroWeb>>
+  {
+    return this.httpCliente.get<PerroWeb>(PerroService.WEB_API_PERROS, {observe:'response'});
   }
 }
