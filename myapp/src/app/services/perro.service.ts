@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { PerroWeb } from '../models/perro-web';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +20,8 @@ export class PerroService {
 
   //pedirPerro
 
-  getPerroAleatorio ()
+  getPerroAleatorio ():Observable<PerroWeb>
   {
-     //this.httpCliente.
+    return this.httpCliente.get<PerroWeb>(PerroService.WEB_API_PERROS);
   }
 }
