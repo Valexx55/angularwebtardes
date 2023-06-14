@@ -1,2 +1,24 @@
-<p>paciente works!</p>
-<!--//TODO mostrar la lista de paciente-->
+<h1>LISTADO DE PACIENTES</h1>
+
+<section *ngIf="listaPacientes && listaPacientes.length > 0">
+    <table class="table mt-5 text-center" id="table-lista-pacientes">
+      <thead>
+        <th scope="col w-25">ID</th>
+        <th scope="col w-25">NOMBRE</th>
+        <th scope="col w-25">EMAIL</th>
+        <th scope="col w-25">APELLIDO</th>
+        <th scope="col w-25">EDAD</th>
+        <th scope="col w-25">CREADO EN</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let paciente of listaPacientes">
+          <td>{{paciente.id}}</td>
+          <td>{{paciente.nombre}}</td>
+          <td>{{paciente.email}}</td>
+          <td>{{paciente.apellido}}</td>
+          <td>{{paciente.edad}}</td>
+          <td>{{paciente.creadoEn | date: 'dd/MM/yyyy'}}</td>
+        </tr>
+      </tbody>
+    </table>
+</section>
