@@ -41,6 +41,15 @@ export class PacienteComponent implements OnInit {
     );
   }
 
+  borrarPaciente(paciente:Paciente)
+  {
+    console.log("toco borrar paciente " + paciente.id);
+  }
+
+  actualizarPaciente(paciente:Paciente)
+  {
+    console.log("toco actualizarPaciente paciente " + paciente.id);
+  }
   mostrarPacientes (lp:Array<Paciente>):void
   {
     this.saludo();

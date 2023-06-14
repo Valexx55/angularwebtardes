@@ -1,6 +1,33 @@
 <h1>LISTADO DE PACIENTES</h1>
-
+<button class="btn btn-primary btn-sm" routerLink="/formulario/paciente">CREAR PACIENTE</button>
 <section *ngIf="listaPacientes && listaPacientes.length > 0">
+    <div class="claseListaPacientes">
+     <div class="card" *ngFor="let paciente of listaPacientes">
+        <img *ngIf="paciente.id%2==0" class="card-img-top" src="https://randomuser.me/api/portraits/men/{{paciente.id}}.jpg">
+        <img *ngIf="paciente.id%2!=0" class="card-img-top" src="https://randomuser.me/api/portraits/women/{{paciente.id}}.jpg">
+        <div class="card-body">
+            <h5 class="card-title">{{paciente.id}} {{paciente.nombre}} {{paciente.apellido}}</h5>
+       </div>
+       <button (click)="borrarPaciente(paciente)" class="btn btn-danger btn-sm">
+        BORRAR
+       </button>
+       <button (click)="actualizarPaciente(paciente)" class="btn btn-success btn-sm">
+        EDITAR
+       </button>
+       <ul class="list-group list-group-flush">
+        <li class="list-group-item">EMAIL {{paciente.email}}</li>
+        <li class="list-group-item">EDAD {{paciente.edad}}</li>
+       </ul> 
+       <div class="card-footer text-muted">
+        <p>{{paciente.creadoEn | date:'short' }}</p>
+       </div>
+    </div>
+</div>
+</section>
+<section *ngIf="!listaPacientes || listaPacientes.length == 0">
+    Lista de pacientes vacía
+</section>
+<!--<section *ngIf="listaPacientes && listaPacientes.length > 0">
     <table class="table mt-5 text-center" id="table-lista-pacientes">
       <thead>
         <th scope="col w-25">ID</th>
@@ -21,4 +48,4 @@
         </tr>
       </tbody>
     </table>
-</section>
+</section>-->
