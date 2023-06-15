@@ -6,6 +6,7 @@ import { PacienteComponent } from './components/paciente/paciente.component';
 import { NumerosComponent } from './components/numeros/numeros.component';
 import { FortalezaComponent } from './components/fortaleza/fortaleza.component';
 import { FormularioPacienteComponent } from './components/formulario-paciente/formulario-paciente.component';
+import { PacientePaginadoComponent } from './components/paciente-paginado/paciente-paginado.component';
 
 //en este array, se configuran las rutas
 //se asocian o mapean un nombre de la url 
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path:"dni", component: DniComponent},
   {path:"perros", component: PerrosComponent},
   {path:"paciente", component: PacienteComponent},
-  {path:"numeros", component: NumerosComponent}
+  {path:"numeros", component: NumerosComponent},
+  {path:"pacientepag", component: PacientePaginadoComponent}
 ];
 
 @NgModule({

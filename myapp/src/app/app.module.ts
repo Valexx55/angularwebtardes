@@ -11,6 +11,10 @@ import { DniComponent } from './components/dni/dni.component';
 import { PacienteComponent } from './components/paciente/paciente.component';
 import { FortalezaComponent } from './components/fortaleza/fortaleza.component';
 import { FormularioPacienteComponent } from './components/formulario-paciente/formulario-paciente.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { PacientePaginadoComponent } from './components/paciente-paginado/paciente-paginado.component';
+
 
 @NgModule({
   declarations: [
@@ -20,13 +24,15 @@ import { FormularioPacienteComponent } from './components/formulario-paciente/fo
     DniComponent,
     PacienteComponent,
     FortalezaComponent,
-    FormularioPacienteComponent //se declaran/registran todos los componentes que trae este módulo
+    FormularioPacienteComponent,
+    PacientePaginadoComponent //se declaran/registran todos los componentes que trae este módulo
   ],
   imports: [
     BrowserModule,//MÓDULO, hace compatible mi app Angular con distintos Navegadores
     AppRoutingModule,//Módulo para la navegación entre Componentes (etiquetas)
     FormsModule,//este módulo, trae una serie de "herramientas" para trabajar con Formularios en Angular
-    HttpClientModule //este modulo engloba el cliente http "AJAX" para comunicar nuestra app con servidores web (java)
+    HttpClientModule, BrowserAnimationsModule,
+    MatPaginatorModule //este modulo engloba el cliente http "AJAX" para comunicar nuestra app con servidores web (java)
   ],
   providers: [],
   bootstrap: [AppComponent]//página de inicio/componente inicial
