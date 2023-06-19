@@ -44,6 +44,19 @@ export class PacienteService {
       return this.httpCliente.post<Paciente>(PacienteService.POST_WEB_API_PACIENTES,paciente, {headers:this.cabeceras});
     }
 
+    postPacienteConFoto (paciente:PacienteClass, archivo:File):Observable<Paciente>
+    {
+      let formdata: FormData = new FormData();
+
+        formdata.append('nombre', paciente.nombre);
+        formdata.append('apellido', paciente.apellido);
+        formdata.append('edad', paciente.edad+'');
+        formdata.append('email', paciente.email);
+        formdata.append('archivo', archivo);
+
+      return this.httpCliente.post<Paciente>(PacienteService.POST_WEB_API_PACIENTES+"/crear-con-foto",formdata);
+    }
+
     borrarPaciente (id:number):Observable<void>
     {
       return this.httpCliente.delete<void>(PacienteService.DELETE_WEB_API_PACIENTES+id);

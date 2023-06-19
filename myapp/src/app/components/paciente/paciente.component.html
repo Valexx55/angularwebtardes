@@ -3,8 +3,11 @@
 <section *ngIf="listaPacientes && listaPacientes.length > 0">
     <div class="claseListaPacientes">
      <div class="card" *ngFor="let paciente of listaPacientes">
-        <img *ngIf="paciente.id%2==0" class="card-img-top" src="https://randomuser.me/api/portraits/men/{{paciente.id}}.jpg">
-        <img *ngIf="paciente.id%2!=0" class="card-img-top" src="https://randomuser.me/api/portraits/women/{{paciente.id}}.jpg">
+      <img *ngIf="!paciente.fotoHashCode" class="card-img-top" src="https://randomuser.me/api/portraits/men/{{paciente.id}}.jpg">
+        <img *ngIf="paciente.fotoHashCode" class="card-img-top" src="http://localhost:8081/paciente/obtenerFoto/{{paciente.id}}">
+
+       <!-- <img *ngIf="paciente.id%2==0" class="card-img-top" src="https://randomuser.me/api/portraits/men/{{paciente.id}}.jpg">
+        <img *ngIf="paciente.id%2!=0" class="card-img-top" src="https://randomuser.me/api/portraits/women/{{paciente.id}}.jpg">-->
         <div class="card-body">
             <h5 class="card-title">{{paciente.id}} {{paciente.nombre}} {{paciente.apellido}}</h5>
        </div>
