@@ -19,6 +19,7 @@ export class PacienteService {
     static readonly GET_WEB_API_PACIENTES:string = "http://localhost:8081/paciente";
     static readonly GET_PAGINA_WEB_API_PACIENTES:string ="http://localhost:8081/paciente/pagina";//http://localhost:8081/paciente/pagina?page=0&size=3
     static readonly POST_WEB_API_PACIENTES:string = "http://localhost:8081/paciente";
+    static readonly DELETE_WEB_API_PACIENTES:string = "http://localhost:8081/paciente/";
 
     cabeceras: HttpHeaders = new HttpHeaders({'Content-type': 'application/json'});
 
@@ -41,5 +42,10 @@ export class PacienteService {
     postPaciente (paciente:PacienteClass):Observable<Paciente>
     {
       return this.httpCliente.post<Paciente>(PacienteService.POST_WEB_API_PACIENTES,paciente, {headers:this.cabeceras});
+    }
+
+    borrarPaciente (id:number):Observable<void>
+    {
+      return this.httpCliente.delete<void>(PacienteService.DELETE_WEB_API_PACIENTES+id);
     }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Paciente } from 'src/app/models/paciente';
 import { PacienteClass } from 'src/app/models/paciente-class';
 import { PacienteService } from 'src/app/services/paciente.service';
@@ -12,7 +13,8 @@ export class FormularioPacienteComponent implements OnInit {
 
   paciente!:PacienteClass;
 
-  constructor(public pacienteService:PacienteService) {
+  constructor(public pacienteService:PacienteService,
+    public router:Router) {
 
     this.paciente = new PacienteClass();
 
@@ -34,7 +36,8 @@ export class FormularioPacienteComponent implements OnInit {
             console.log("se ha creado un paciente nuevo " + 
             pacienteNuevo.id);
             alert('Paciente Insertado Correctamente');
-            //TODO: navegar al listado
+            //navegar al listado
+            this.router.navigateByUrl("/paciente");
           }
           //next: this.mostrarPacientes //Al usar una función con nombre, el ámbito del this cambia y no representa más al componente.
           //Con lo que no puedo invocar las funciones o propiedades del Componente

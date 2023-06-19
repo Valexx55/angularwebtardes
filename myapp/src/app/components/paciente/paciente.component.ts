@@ -44,6 +44,25 @@ export class PacienteComponent implements OnInit {
   borrarPaciente(paciente:Paciente)
   {
     console.log("toco borrar paciente " + paciente.id);
+    if (confirm("¿De verdad quiere borrar al paciente"))
+    {
+      console.log("confirma borrado " + paciente.id); 
+      this.pacienteService.borrarPaciente(paciente.id).subscribe
+      (
+        {
+          complete: () => console.log("Ha termianado"),
+          error:(error_rx) => console.log("Error "+ error_rx.status + " " +error_rx.message),
+          next: ()=>
+          {
+            //actualizar la lista the pacientes
+            //1 recargar la página
+            // TODO:2 eliminar del array local, el usuario borrado
+            this.listaPacientes = this.listaPacientes.filter(pacienteAux => pacienteAux.id != paciente.id);
+          }        
+        }
+      )
+    }
+    //llamamos al servicio de borrar
   }
 
   actualizarPaciente(paciente:Paciente)
