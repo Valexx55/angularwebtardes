@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { PageEvent } from '@angular/material/paginator';
-import { error } from 'console';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Paciente } from 'src/app/models/paciente';
 import { PacienteService } from 'src/app/services/paciente.service';
 
@@ -9,7 +8,8 @@ import { PacienteService } from 'src/app/services/paciente.service';
   templateUrl: './paciente-paginado.component.html',
   styleUrls: ['./paciente-paginado.component.css']
 })
-export class PacientePaginadoComponent implements OnInit {
+export class PacientePaginadoComponent implements OnInit, AfterViewInit {
+
 
 
 
@@ -23,18 +23,35 @@ export class PacientePaginadoComponent implements OnInit {
   opcionesTamanioPagina:number[]=[2, 4, 6, 8];
   paginaActual:number=0;//page
 
-  
+  @ViewChild(MatPaginator) mp:MatPaginator;
   
   constructor(public pacienteService:PacienteService)
   {
     this.listaPacientes = new Array<Paciente>();
   }
 
+
+  ngAfterViewInit(): void {
+    console.log("La plantilla de este componte, se ha cargado");
+  // if (this.mp)
+    //{
+      this.mp._intl.itemsPerPageLabel="Registros por página";
+      this.mp._intl.nextPageLabel="Siguiente";
+      this.mp._intl.previousPageLabel="Anterior";
+      this.mp._intl.firstPageLabel="Primera página";
+      this.mp._intl.lastPageLabel="Última página";
+  /*  }
+    else {
+      console.log("sin hijo paginador");
+    }*/
+    
+  }
+
   
 
 
   ngOnInit(): void {
-    this.getAlumnosPorPaginas();//en la primera llamada, nos carga la página 0 de tamaño 2
+    this.getPacientesPorPaginas();//en la primera llamada, nos carga la página 0 de tamaño 2
   }
 
   
@@ -50,11 +67,11 @@ export class PacientePaginadoComponent implements OnInit {
     this.paginaActual=evento.pageIndex;
     this.totalPorPagina=evento.pageSize;
 
-    this.getAlumnosPorPaginas();
+    this.getPacientesPorPaginas();
   }
 
 
-  getAlumnosPorPaginas ()
+  getPacientesPorPaginas ()
   {
     this.pacienteService.getPaginaPacientes(this.paginaActual, this.totalPorPagina).subscribe
     (

@@ -23,12 +23,19 @@
         </tr>
       </tbody>
     </table>
-    <mat-paginator [length]="totalRegistros"
+    
+    <!--<mat-paginator [length]="totalRegistros"
               [pageSize]="totalPorPagina"
               [pageSizeOptions]="opcionesTamanioPagina"
               [pageIndex]="paginaActual"
               (page)="paginar($event)"
-              aria-label="Select page">
-</mat-paginator>
+              showFirstLastButtons></mat-paginator>-->
 
 </section>
+
+<mat-paginator [length]="totalRegistros"
+              [pageSize]="totalPorPagina"
+              [pageSizeOptions]="opcionesTamanioPagina"
+              [pageIndex]="paginaActual"
+              (page)="paginar($event)"
+              showFirstLastButtons></mat-paginator>
